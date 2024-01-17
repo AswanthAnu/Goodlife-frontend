@@ -3,6 +3,8 @@ import {
   Button, Stack
 } from '@mui/material'
 import DialogRemove from './DialogRemove';
+import config from '../../config';
+
 
 const CartItemRemove = ({cartitem, setCartItems}) => {
 
@@ -20,7 +22,7 @@ const CartItemRemove = ({cartitem, setCartItems}) => {
 
   // CartItemRemove.js
   const fetchUpdatedCart = () => {
-    const apiUrl = '/api/cart/';
+    const apiUrl = `${config.apiUrl}/cart/`;
     const token = localStorage.getItem('token');
   
     fetch(apiUrl, {
@@ -42,7 +44,7 @@ const CartItemRemove = ({cartitem, setCartItems}) => {
   
   const handleRemoveConfirmed = () => {
     // Make an API request to remove the cart item
-    const apiUrl = `/api/remove-cart-item/${cartitem.id}/`;
+    const apiUrl = `${config.apiUrl}/remove-cart-item/${cartitem.id}/`;
 
     fetch(apiUrl, {
       method: 'DELETE',

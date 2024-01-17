@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import DeliveryTabs from './DeliveryTabs';
 import { useNavigate } from 'react-router-dom';
+import config from '../../config';
 
 
 const Delivery = () => {
@@ -18,7 +19,7 @@ const Delivery = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    const apiUrl = `/api/delivery/?page=${currentPage}`
+    const apiUrl = `${config.apiUrl}/delivery/?page=${currentPage}`
     const token = localStorage.getItem('token')
     console.log("entered into delivery")
     fetch(apiUrl, {

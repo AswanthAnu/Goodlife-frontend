@@ -12,6 +12,7 @@ import {
   Alert,
 } from '@mui/material';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import config from '../../config';
 
 const RegisterCard = () => {
   const [firstName, setFirstName] = useState('');
@@ -58,7 +59,7 @@ const RegisterCard = () => {
     try {
 
       const csrftoken = getCookie('csrftoken');
-      const response = await fetch('/api/register/', {
+      const response = await fetch(`${config.apiUrl}/register/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

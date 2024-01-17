@@ -14,6 +14,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 // import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import NavbarLoginLogout from './NavbarLoginLogout';
+import config from '../../config';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -23,13 +24,22 @@ const Navbar = () => {
     handleIsStaff();
   }, []);
 
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
   const handleIsStaff = async () => {
     try {
-      const response = await fetch('/api/is_staff/', {
+      const csrftoken = getCookie('csrftoken');
+      console.log(csrftoken, 'csrf token')
+      const response = await fetch(`${config.apiUrl}/is_staff/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Token ${localStorage.getItem('token')}`,
+          'X-CSRFToken': csrftoken,
         },
       });
 

@@ -13,6 +13,7 @@ import CartItemsCard from './CartItemsCard'
 import OrderSummaryCard from './OrderSummaryCard'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import OfferBanner from '../HomePageComponents/OfferBanner';
+import config from '../../config';
 
 const Cart = () => {
 
@@ -24,7 +25,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = `/api/cart/?page=${currentPage}`
+    const apiUrl = `${config.apiUrl}/cart/?page=${currentPage}`
     const token = localStorage.getItem('token')
     fetch(apiUrl, {
       headers: {
@@ -68,7 +69,7 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    const apiUrl = '/api/offercheck/';
+    const apiUrl = `${config.apiUrl}/offercheck/`;
     const token = localStorage.getItem('token');
     setLoading(true);
   

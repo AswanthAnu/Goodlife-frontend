@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
+import config from '../../config';
 
 const OfferBanner = () => {
   const [offers, setOffers] = useState([]);
@@ -10,7 +11,7 @@ const OfferBanner = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/offers/');
+        const response = await fetch(`${config.apiUrl}/offers/`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

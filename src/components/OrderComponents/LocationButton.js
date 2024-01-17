@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Grid, Dialog, DialogActions, DialogContent, Typography } from '@mui/material';
 import {styled} from '@mui/system'
+import config from '../../config';
+
 
 const StyledButton = styled(Button)({
   backgroundColor: "#117a2d",
@@ -17,7 +19,7 @@ const LocationButton = ({ orderCustomer }) => {
 
   const openGoogleMaps = () => {
     try {
-      fetch(`/api/get-customer-coordinates/?phone_number=${phoneNumber}`)
+      fetch(`${config.apiUrl}/get-customer-coordinates/?phone_number=${phoneNumber}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

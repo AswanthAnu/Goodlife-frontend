@@ -8,6 +8,7 @@ import {
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import StockDialog from './StockDialog'
+import config from '../../config';
 
 const CartPrice = ({cartitem, updateCartItemQuantity }) => {
 
@@ -21,7 +22,7 @@ const CartPrice = ({cartitem, updateCartItemQuantity }) => {
     const csrfToken = document.cookie.match(/csrftoken=([\w-]+)/);
     const csrfTokenValue = csrfToken ? csrfToken[1] : null;
     console.log(csrfTokenValue, 'csrf')
-    const apiUrl = `/api/update-cart-item-quantity/${cartitem.id}/`;
+    const apiUrl = `${config.apiUrl}/update-cart-item-quantity/${cartitem.id}/`;
     console.log('quantity', quantity)
 
     // Define the data to send in the POST request

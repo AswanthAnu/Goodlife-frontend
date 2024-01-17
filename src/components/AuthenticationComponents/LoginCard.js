@@ -11,6 +11,7 @@ import {
   Alert,
 } from '@mui/material';
 import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import config from '../../config';
 
 const LoginCard = () => {
   const [username, setUsername] = useState('');
@@ -18,6 +19,7 @@ const LoginCard = () => {
   const [error, setError] = useState(false);
   const [snackbarOpen, setSnackbarOpen] = useState(false); // Use snackbarOpen state
   const [snackbarMessage, setSnackbarMessage] = useState('');
+  
 
 
   
@@ -32,7 +34,7 @@ const LoginCard = () => {
     try {
       const csrftoken = getCookie('csrftoken');
       console.log(csrftoken, 'csrf token')
-      const response = await fetch('/api/login/', {
+      const response = await fetch(`${config.apiUrl}/login/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

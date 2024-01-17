@@ -7,6 +7,8 @@ import {
 } from '@mui/material'
 import CustomerDetailsPaper from './CustomerDetailsPaper'
 import OrderSummaryPaper from './OrderSummaryPaper'
+import config from '../../config'
+
 
 
 
@@ -17,7 +19,7 @@ const CheckoutPage = () => {
     const [loading, setLoading] = useState(true);
   
     useEffect(() => {
-      const apiUrl = '/api/ordersummary-cart/'
+      const apiUrl = `${config.apiUrl}/ordersummary-cart/`
       const token = localStorage.getItem('token')
       console.log("entered into checkout")
       fetch(apiUrl, {

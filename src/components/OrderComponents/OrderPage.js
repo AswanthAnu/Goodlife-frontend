@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 import OrderAccordianSummary from './OrderAccordianSummary';
 import OrderAccordianDetails from './OrderAccordianDetails';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import config from '../../config';
 
 
 
@@ -29,7 +30,7 @@ const OrdersPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = `/api/orders/?page=${currentPage}`
+    const apiUrl = `${config.apiUrl}/orders/?page=${currentPage}`
     const token = localStorage.getItem('token')
     fetch(apiUrl, {
       headers: {

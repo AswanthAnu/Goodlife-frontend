@@ -1,6 +1,8 @@
 import { Box, TextField, IconButton } from '@mui/material';
 import React, { useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
+import config from '../../config';
+
 
 const SearchField = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -8,7 +10,7 @@ const SearchField = ({ onSearch }) => {
   const handleSearch = async () => {
     try {
       if (searchQuery.trim() === '') {
-        const response = await fetch(`/api/products/`);
+        const response = await fetch(`${config}/products/`);
         if (response.ok) {
           const data = await response.json();
           if (data.products) {
@@ -20,7 +22,7 @@ const SearchField = ({ onSearch }) => {
           console.error('Error fetching products: ', response.status);
         }
       } else {
-        const response = await fetch(`/api/products/search/?search=${searchQuery}`);
+        const response = await fetch(`${config.apiUrl}/products/search/?search=${searchQuery}`);
         if (response.ok) {
           const data = await response.json();
           console.log(data, 'data');

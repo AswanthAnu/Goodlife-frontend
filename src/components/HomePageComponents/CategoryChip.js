@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Chip, IconButton, useTheme } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import config from '../../config';
 
 const CategoryChip = ({ items, setCurrentCategory, onSearch }) => {
   const [startIndex, setStartIndex] = useState(0);
@@ -25,7 +26,7 @@ const CategoryChip = ({ items, setCurrentCategory, onSearch }) => {
 
   const handleClick = async (index) => {
     try {
-      const response = await fetch(`/api/products/category/${items[startIndex + index]}/?page=${currentPage}`);
+      const response = await fetch(`${config.apiUrl}/products/category/${items[startIndex + index]}/?page=${currentPage}`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');

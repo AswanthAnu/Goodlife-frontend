@@ -9,6 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import config from "../../config";
+
 
 const StyledButton = styled(Button)({
   backgroundColor: "#117a2d",
@@ -25,7 +27,7 @@ const Invoice = ({ order_id }) => {
   const handleDownload = () => {
     try {
       // Update the API endpoint to match your Django URL pattern
-      fetch(`/api/download_invoice/${order_id}/`)
+      fetch(`${config.apiUrl}/download_invoice/${order_id}/`)
         .then((response) => {
           if (!response.ok) {
             throw new Error("Network response was not ok");

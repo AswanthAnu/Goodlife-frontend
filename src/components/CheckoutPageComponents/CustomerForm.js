@@ -13,6 +13,7 @@ import {
   DialogActions,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import config from '../../config';
 
 const CustomerForm = ({ cartitems }) => {
   const [formData, setFormData] = useState({
@@ -126,7 +127,7 @@ const CustomerForm = ({ cartitems }) => {
     const csrfToken = document.cookie.match(/csrftoken=([\w-]+)/);
     const csrfTokenValue = csrfToken ? csrfToken[1] : null;
     const Token = localStorage.getItem('token');
-    fetch('/api/create-order/', {
+    fetch(`${config.apiUrl}/create-order/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -167,7 +168,7 @@ const CustomerForm = ({ cartitems }) => {
   const checkPhoneNumberExists = (phoneNumber) => {
     console.log('enterd into phonenumber check')
     // Make an API call to check if the phone number exists
-    fetch(`/api/check-phone-number-exists/?phone_number=${phoneNumber}`)
+    fetch(`${config.apiUrl}/check-phone-number-exists/?phone_number=${phoneNumber}`)
       .then(response => response.json())
       .then(data => {
         console.log("customer data", data)

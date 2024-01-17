@@ -22,7 +22,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import SearchField from '../SearchFieldComponents/SearchField';
 import CategoryChip from './CategoryChip';
 import OfferBanner from './OfferBanner';
-
+import config from '../../config';
 
 
 
@@ -46,7 +46,7 @@ const HomePageContent = () => {
 
     const handleClick = async () => {
       try {
-        const response = await fetch(`/api/products/category/${currentCategory}/?page=${currentPage}`);
+        const response = await fetch(`${config.apiUrl}/products/category/${currentCategory}/?page=${currentPage}`);
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -60,7 +60,7 @@ const HomePageContent = () => {
     };
 
     if (!currentCategory) {
-      const apiUrl = `/api/products/?page=${currentPage}`;
+      const apiUrl = `${config.apiUrl}/products/?page=${currentPage}`;
 
       fetch(apiUrl)
         .then((response) => response.json())
@@ -132,7 +132,7 @@ const HomePageContent = () => {
       const csrfToken = document.cookie.match(/csrftoken=([\w-]+)/);
       const csrfTokenValue = csrfToken ? csrfToken[1] : null;
       console.log(csrfToken, 'csrf')
-      const response = await fetch(`/api/add-to-cart/${variantId}/`, {
+      const response = await fetch(`${config.apiUrl}/add-to-cart/${variantId}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -4,12 +4,13 @@ import {
     TextField, 
     MenuItem,  
 } from '@mui/material';
+import config from '../../config';
 
 const DeliveryStatus = ({order, setOrders}) => {
   const [status, setStatus] = useState(order.order_details[0].delivery_status);
 
   const fetchUpdatedOrders = async () => {
-    const apiUrl = '/api/delivery/';
+    const apiUrl = `${config.apiUrl}/delivery/`;
     const token = localStorage.getItem('token');
   
     try {
@@ -35,7 +36,7 @@ const DeliveryStatus = ({order, setOrders}) => {
 
   const updateDeliveryStatus = async (orderId, newStatus) => {
     try {
-      const apiUrl = `/api/update-delivery-status/${orderId}/`;
+      const apiUrl = `${config.apiUrl}/update-delivery-status/${orderId}/`;
       const token = localStorage.getItem('token');
   
       const response = await fetch(apiUrl, {
