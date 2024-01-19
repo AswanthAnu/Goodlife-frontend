@@ -12,7 +12,6 @@ import {
   Hidden,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-// import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
 import NavbarLoginLogout from './NavbarLoginLogout';
 import config from '../../config';
 
@@ -24,22 +23,15 @@ const Navbar = () => {
     handleIsStaff();
   }, []);
 
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
 
   const handleIsStaff = async () => {
     try {
-      const csrftoken = getCookie('csrftoken');
-      console.log(csrftoken, 'csrf token')
       const response = await fetch(`${config.apiUrl}/is_staff/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Token ${localStorage.getItem('token')}`,
-          'X-CSRFToken': csrftoken,
+          
         },
       });
 
@@ -59,18 +51,29 @@ const Navbar = () => {
     <>
       <AppBar position="static" color="success">
         <Toolbar>
-          <IconButton size="large" edge="start" color="inherit" aria-label="logo">
-            {/* <LocalFloristIcon /> */}
-          </IconButton>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          
+        <Typography variant="h6" sx={{ flexGrow: 1 }}>
             <Link
               to="/"
               style={{
                 textDecoration: 'none',
                 color: 'inherit',
+                display: 'flex',
+                alignItems: 'center',
               }}
             >
-              Good Life Bazar
+              <img
+                src="static/images/logo/GLBLOGO.png"
+                alt="Good Life Bazar Logo"
+                style={{
+                  marginRight: '8px',
+                  maxWidth: '40px',
+                  verticalAlign: 'middle',  // Adjust the vertical alignment
+                }}
+              />
+              <span style={{ verticalAlign: 'middle' }}>
+                Good Life Bazar
+              </span>
             </Link>
           </Typography>
           <Hidden mdDown>

@@ -59,6 +59,7 @@ const RegisterCard = () => {
     try {
 
       const csrftoken = getCookie('csrftoken');
+      
       const response = await fetch(`${config.apiUrl}/register/`, {
         method: 'POST',
         headers: {

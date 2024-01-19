@@ -123,20 +123,17 @@ const HomePageContent = () => {
       setDialogOpen(false)
     }
 
-
-  
+   
   const addToCart = async (variantId) => {
     console.log(variantId, 'variant id')
     try {
       
-      const csrfToken = document.cookie.match(/csrftoken=([\w-]+)/);
-      const csrfTokenValue = csrfToken ? csrfToken[1] : null;
-      console.log(csrfToken, 'csrf')
+      const authToken = localStorage.getItem('token');
       const response = await fetch(`${config.apiUrl}/add-to-cart/${variantId}/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRFToken': csrfTokenValue,
+          'Authorization': `Token ${authToken}`,
         },
         body: JSON.stringify({ quantity: 1 }),
       });

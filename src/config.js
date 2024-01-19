@@ -1,5 +1,5 @@
 const config = {
-    apiUrl: 'https://www.api.goodlifebazar.com/api',
+    apiUrl: 'https://api.goodlifebazar.com/api',
   };
   
   export default config;

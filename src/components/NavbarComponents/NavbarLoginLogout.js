@@ -14,25 +14,16 @@ const NavbarLoginLogout = () => {
     setIsAuthenticated(!!token);
   }, []);
 
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
-  }
 
   const handleLogout = async () => {
-    console.log(localStorage.getItem('token'), 'token-11');
-    const csrftoken = getCookie('csrftoken');
-    console.log("wPPWKjlfPBuJs2YJDdAF2iVbXLPk6EeG", 'csrftoke -11')
-
+    
     try {
-      console.log(csrftoken, 'csrftoke -22')
       const response = await fetch(`${config.apiUrl}/logout/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Token ${localStorage.getItem('token')}`,
-          'X-CSRFToken': "wPPWKjlfPBuJs2YJDdAF2iVbXLPk6EeG",
+          
         },
         
       });
