@@ -30,9 +30,10 @@ const LocationButton = ({ orderCustomer }) => {
           if (data.latitude && data.longitude) {
             const latitude = data.latitude;
             const longitude = data.longitude;
-            const myLocation = "my_location"; // Replace with your actual location or latitude/longitude
+            const my_latitude = 9.023991;
+            const my_longitude = 76.88800;
 
-            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${myLocation}&destination=${latitude},${longitude}`;
+            const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${my_latitude},${my_longitude}&destination=${latitude},${longitude}`;
             window.open(googleMapsUrl, '_blank');
           } else {
             // Handle errors

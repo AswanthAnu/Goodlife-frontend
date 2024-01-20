@@ -46,7 +46,7 @@ const OrderSummary = ({ cartitems }) => {
 
   const numberOfCartItems = cartitems.length;
 
-  cartDiscount = Math.round(totalDiscount / numberOfCartItems);
+  cartDiscount = Math.round(cartAmount - finalCartAmount);
 
   return (
     <Stack>

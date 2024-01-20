@@ -37,7 +37,7 @@ const ProductDetailTable = ({orderItems}) => {
             <TableCell>{`${row.variant_weight} ${row.variant_weight_unit}`}</TableCell>
             <TableCell>{row.quantity}</TableCell>
             <TableCell>{row.original_price}</TableCell>
-            <TableCell>{row.discount}</TableCell>
+            <TableCell>{Math.round(row.original_price - row.discount_price)}</TableCell>
             <TableCell>{row.discount_price}</TableCell>
           </TableRow>
         );

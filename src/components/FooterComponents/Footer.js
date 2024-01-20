@@ -50,19 +50,21 @@ const Footer = () => {
 
         {/* Developer Details Section */}
         <div style={{ flex: 1 }}>
+          
           <div style={{ textAlign: 'center' }}>
-            <Typography variant="body2" gutterBottom>
-              Developed by
-            </Typography>
-
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div>
+            <div>
                 <img
                   src="static/images/logo/ME3_SERVICES.png"
                   alt="me3 services Logo"
-                  style={{ maxWidth: '80px' }}
+                  style={{ maxWidth: '80px', marginBottom: '-20px' }}
                 />
               </div>
+            <Typography variant="body2" gutterBottom>
+              Developed by
+            </Typography>
+            <Box></Box>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              
               <div style={{ marginLeft: '1px' }}>
                 <Typography variant="body2" color="text.secondary">
                   <strong>me3 services</strong>

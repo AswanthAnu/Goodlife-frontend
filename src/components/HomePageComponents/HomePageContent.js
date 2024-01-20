@@ -158,7 +158,7 @@ const HomePageContent = () => {
   
   return (
     !loading && (
-      <Container maxWidth="xl" style={{ marginTop: '30px', marginBottom: '30px' }}>
+      <Container maxWidth="lg" style={{ marginTop: '30px', marginBottom: '30px', }}>
         <Grid container spacing={1} style={{ marginBottom: '30px' }}>
           {/* Offer Banner */}
           <Grid item  md={7} sm={12} style={{ marginLeft: '44px' }}>
@@ -166,22 +166,28 @@ const HomePageContent = () => {
           </Grid>
 
           {/* Search Field */}
-          <Grid item  md={4} sm={12} style={{ marginTop: '18px', marginLeft: '-26px'}}>
+          <Grid item md={4} sm={6} style={{ marginTop: '12px', marginLeft: '-10px' }}>
             <Stack>
-              <SearchField onSearch={handleSearch} />
-            </Stack>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={1}>
-          {/* CategoryChip */}
-          <Grid item md={2} sm={12}>
+              <SearchField
+                onSearch={handleSearch}
+              
+              />
+            </Stack>  
+            <Stack>
+            
             <CategoryChip
               items={uniqueCategories}
               setCurrentCategory = {setCurrentCategory}
               onSearch={handleSearch}
             />
+          </Stack>
           </Grid>
+
+        </Grid>
+
+        <Grid container spacing={1}>
+          {/* CategoryChip */}
+          
           {/* Product Display */}
           <Grid item lg={10} sm={12}>
             {products.length === 0 ? (
@@ -203,18 +209,20 @@ const HomePageContent = () => {
               
             </Box>
           ) : (
-            <Grid container spacing={2}>
+            <Grid container spacing={5}  justifyContent="flex-start" padding={"2%"}>
               {products.map((product, index) => (
-                <Grid item xs={12} sm={4} md={3} lg={3} key={index}>
-                  <Card style={{ height: '100%',}}>
-                      <Box sx={{ 
-                                  m: 1, 
-                                  border: 1, 
-                                  borderColor: 'grey.200', 
-                                  borderRadius: '16px', 
-                                  position: 'relative' }}>
-                        {selectedVariants[index] &&
-                        product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price > 0 && (           
+                <Grid item xs={4} sm={4} md={3} lg={3} xl={3} key={index}>
+                  <Card style={{ height: '100%', width: '220px'}}>
+                    <Box sx={{
+                      m: 1,
+                      border: 1,
+                      borderColor: 'grey.200',
+                      borderRadius: '16px',
+                      position: 'relative',
+                      overflow: 'hidden', // Hide overflow content
+                    }}>
+                      {selectedVariants[index] &&
+                        product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price > 0 && (
                           <Typography
                             variant="body2"
                             component="div"
@@ -226,91 +234,91 @@ const HomePageContent = () => {
                               color: 'white',
                               padding: '4px 8px',
                               borderTopLeftRadius: '16px',
+                              fontSize: '10px', // Adjust font size
                             }}
                           >
                             {selectedVariants[index] &&
-                            product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price}rs off
+                              product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price}rs off
                           </Typography>
                         )}
-                        <CardMedia
-                          component="img"
-                          height="190"
-                          style={{ objectFit: 'cover' }}
-                          image={product.image}
-                        />
-                      </Box>
-                      <CardContent>
-                        <Typography gutterBottom variant="h6" component="div">
-                          {product.product_name}
-                        </Typography>
-                        <Select
-                          value={selectedVariants[index] || ''}
-                          onChange={(event) => handleVariantChange(event, index)}
-                          style={{ margin: 5, width: '100%' }}
+                      <CardMedia
+                        component="img"
+                        height="120" // Adjust the fixed image height
+                        style={{ objectFit: 'cover', width: '100%' }} // Ensure the image covers the entire space
+                        image={product.image}
+                      />
+                    </Box>
+                    <CardContent>
+                      <Typography gutterBottom variant="subtitle2" component="div"> {/* Adjust font size */}
+                        {product.product_name}
+                      </Typography>
+                      <Select
+                        value={selectedVariants[index] || ''}
+                        onChange={(event) => handleVariantChange(event, index)}
+                        style={{ margin: 5, width: '100%', fontSize: '12px' }} // Adjust font size
+                      >
+                        {product.variants.map((variant, variantIndex) => (
+                          <MenuItem key={variantIndex} value={variant.id}>
+                            {`${Math.round(variant.weight)} ${variant.weight_unit}`}
+                            {variant.pricing.discount > 0 && (
+                              <span
+                                style={{
+                                  marginLeft: '8px',
+                                  padding: '2px 6px',
+                                  backgroundColor: 'rgba(0, 128, 0, 0.7)',
+                                  color: 'white',
+                                  borderRadius: '4px',
+                                  fontSize: '10px', // Adjust font size
+                                }}
+                              >
+                                {`${variant.pricing.discount}% off`}
+                              </span>
+                            )}
+                          </MenuItem>
+                        ))}
+                      </Select>
+
+                      {selectedVariants[index] && product.variants.find((variant) => variant.id === selectedVariants[index]) && (
+                        <>
+                          <Typography variant="caption" color="textSecondary" style={{ fontSize: '10px' }}> {/* Adjust font size */}
+                            Original Price: &#8377;{product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.original_price}
+                          </Typography>
+                          <Typography variant="subtitle2" color="textPrimary" style={{ fontSize: '12px' }}> {/* Adjust font size */}
+                            Discount Price: &#8377;{product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price}
+                          </Typography>
+                        </>
+                      )}
+                    </CardContent>
+                    <CardActions>
+                      {selectedVariants[index] && product.variants.find((variant) => variant.id === selectedVariants[index]).stock_quantity ? (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          fullWidth
+                          onClick={() => addToCart(selectedVariants[index])}
                         >
-                          {product.variants.map((variant, variantIndex) => (
-                            <MenuItem key={variantIndex} value={variant.id}>
-                              {`${Math.round(variant.weight)} ${variant.weight_unit}`}
-                              {variant.pricing.discount > 0 && (
-                                <span
-                                  style={{
-                                    marginLeft: '8px',
-                                    padding: '2px 6px',
-                                    backgroundColor: 'rgba(0, 128, 0, 0.7)',
-                                    color: 'white',
-                                    borderRadius: '4px',
-                                    fontSize: '12px',
-                                  }}
-                                >
-                                  {`${variant.pricing.discount}% off`}
-                                </span>
-                              )}
-                            </MenuItem>
-                          ))}
-                        </Select>
-
-                        {selectedVariants[index] && product.variants.find((variant) => variant.id === selectedVariants[index]) && (
-                          <>
-                            <Typography variant="body2" color="textSecondary">
-                              Original Price: &#8377;{product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.original_price}
-                            </Typography>
-                            <Typography variant="body2" color="textPrimary">
-                              Discount Price: &#8377;{product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price}
-                            </Typography>
-                          </>
-                        )}
-
-
-
-                      </CardContent>
-                      <CardActions>
-                        {selectedVariants[index] && product.variants.find((variant) => variant.id === selectedVariants[index]).stock_quantity ? (
-                          <Button 
-                            variant="contained" 
-                            color="primary" 
-                            size="small" 
-                            fullWidth 
-                            onClick={() => addToCart(selectedVariants[index])}
-                          >
-                            Add to Cart
-                          </Button>
-                        ) : (
-                          <Button variant="contained" color="error" size="small" fullWidth
+                          Add to Cart
+                        </Button>
+                      ) : (
+                        <Button variant="contained" color="error" size="small" fullWidth
                           disabled
-                          >
-                            Out of Stock
-                          </Button>
-                        )}
-                      </CardActions>
-                    </Card>
-                    <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
-                      <Alert severity="success" onClose={() => setSnackbarOpen(false)}>
-                        {snackbarMessage}
-                      </Alert>
-                    </Snackbar>
+                        >
+                          Out of Stock
+                        </Button>
+                      )}
+                    </CardActions>
+                  </Card>
+
+                  <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
+                    <Alert severity="success" onClose={() => setSnackbarOpen(false)}>
+                      {snackbarMessage}
+                    </Alert>
+                  </Snackbar>
                 </Grid>
               ))}
             </Grid>
+
           )}
         </Grid>
       </Grid>

@@ -11,7 +11,7 @@ import {
   Grid,
   Alert,
 } from '@mui/material';
-import LocalFloristIcon from '@mui/icons-material/LocalFlorist';
+import WarningIcon from '@mui/icons-material/Warning';
 import config from '../../config';
 
 const RegisterCard = () => {
@@ -25,6 +25,7 @@ const RegisterCard = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [snackbarOpen, setSnackbarOpen] = useState(false); // Added state for Snackbar
   const [snackbarMessage, setSnackbarMessage] = useState(''); // Added state for Snackbar
+  const [showPasswordReminder, setShowPasswordReminder] = useState(false);
 
   const handleRegister = async () => {
     if (!firstName || !lastName || !username || !password1 || !password2) {
@@ -88,6 +89,16 @@ const RegisterCard = () => {
     setSnackbarOpen(false);
   };
 
+  const handlePasswordChange = (value) => {
+    setPassword1(value);
+    setShowPasswordReminder(true);
+
+    // Hide the password reminder after 3 seconds (adjust duration as needed)
+    setTimeout(() => {
+      setShowPasswordReminder(false);
+    }, 3000);
+  };
+
   return (
     <Container maxWidth="xs">
       <Card style={{ marginTop: '20px' }}>
@@ -133,17 +144,26 @@ const RegisterCard = () => {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Password"
-                type="password"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                value={password1}
-                onChange={(e) => setPassword1(e.target.value)}
-              />
-            </Grid>
+            <Grid item xs={12} style={{ position: 'relative' }}>
+                <TextField
+                  label="Password"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                  margin="normal"
+                  value={password1}
+                  onChange={(e) => handlePasswordChange(e.target.value)}
+                />
+                {/* Custom-styled div for password reminder */}
+                {showPasswordReminder && (
+                  <div style={{ position: 'absolute', top: '-40px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#E1F5FE', padding: '8px', borderRadius: '4px', boxShadow: '0 2px 4px rgba(0,0,0,0.2)', display: 'flex', alignItems: 'center' }}>
+                    <WarningIcon style={{ marginRight: '8px', color: '#1976D2' }} />
+                    <Typography variant="body2" style={{ color: '#1976D2' }}>
+                      Please remember this password for future authentication.
+                    </Typography>
+                  </div>
+                )}
+              </Grid>
             <Grid item xs={12}>
               <TextField
                 label="Confirm Password"

@@ -48,6 +48,7 @@ const SearchField = ({ onSearch }) => {
         variant="outlined"
         placeholder="Search"
         value={searchQuery}
+        size='small'
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyPress={handleKeyPress}
         InputProps={{
@@ -57,7 +58,7 @@ const SearchField = ({ onSearch }) => {
             </IconButton>
           ),
         }}
-        style={{ width: '300px', marginBottom: '20px' }}
+        style={{ width: '250px', marginBottom: '20px' }}
       />
     </Box>
   );

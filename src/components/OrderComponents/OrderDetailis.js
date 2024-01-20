@@ -48,7 +48,7 @@ const OrderDetails = ({ order }) => {
           <KeyListItemText>
             <Typography variant="body1">Discount</Typography>
           </KeyListItemText>
-          <ValueTypography variant="body2" style={{ color: 'green' }}>{`₹${order.total_discount}`}</ValueTypography>
+          <ValueTypography variant="body2" style={{ color: 'green' }}>{`₹${order.total_amount - order.discount_amount}`}</ValueTypography>
         </ListItem>
         <ListItem>
           <KeyListItemText>
