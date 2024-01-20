@@ -3,15 +3,16 @@ import {
     CardMedia 
 } from '@mui/material'
 
+
 const CardImage = ({cartitem, index}) => {
-  console.log(cartitem.product.image, 'cartitem.product---------')
+  console.log(cartitem, 'cartitem.product---------')
   return (
     <CardMedia
         component="img"
         alt={`Image for item ${index}`}
         
         style={{ objectFit: 'cover' }}
-        image={cartitem.product.image}
+        image={`https://api.goodlifebazar.com${cartitem.product.image}`}
     />
   )
 }
