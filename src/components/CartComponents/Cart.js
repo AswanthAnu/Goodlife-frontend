@@ -104,7 +104,7 @@ const Cart = () => {
   return (
     !loading && (
       <Container maxWidth="lg" style={{ marginTop: '30px', marginBottom: '30px'}}>
-        <Typography variant="h4" style={{ marginBottom: '20px', fontWeight: 'bold', textAlign: 'center' }}>
+        <Typography variant="h4" style={{ marginBottom: '20px', fontWeight: 'bold', textAlign: 'center', backgroundColor:'white' }}>
           My Cart
         </Typography>
         {cartItems.length === 0 ? (
@@ -120,7 +120,7 @@ const Cart = () => {
             <ShoppingCartIcon
               sx={{ fontSize: '64px', color: 'white' }}
             />
-            <Typography variant="h6" sx={{ color: 'white' }}>
+            <Typography variant="h6" sx={{ color: 'black', backgroundColor:'white' }}>
               Your cart is empty. Go back to the home and grab something.
             </Typography>
             <Button

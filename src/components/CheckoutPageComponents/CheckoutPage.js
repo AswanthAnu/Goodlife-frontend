@@ -40,7 +40,7 @@ const CheckoutPage = () => {
   return (
     !loading && (
       <Container maxWidth="lg" style={{ marginTop: '30px', marginBottom: '30px'}}>
-          <Typography variant="h4"  style={{ marginBottom: '20px', fontWeight: 'bold', textAlign:'center'}}>
+          <Typography variant="h4"  style={{ marginBottom: '20px', fontWeight: 'bold', textAlign:'center', backgroundColor: 'white'}}>
               Checkout
           </Typography>
           <Grid

@@ -40,7 +40,7 @@ const PendingAccordion = ({ orders, setOrders }) => {
           }}
         >
           <ShoppingCartIcon sx={{ fontSize: '64px', color: 'gray' }} />
-          <Typography variant="h6" sx={{ color: 'white' }}>
+          <Typography variant="h6" sx={{ color: 'black', backgroundColor:'white' }}>
             It is empty. Nothing delivered yet.
           </Typography>
           <Button
