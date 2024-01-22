@@ -32,7 +32,19 @@ const OrderSummary = ({ cartitems }) => {
 
   const numberOfCartItems = cartitems.length;
 
-  cartDiscount = Math.round(totalDiscount / numberOfCartItems);
+  function customRound(number) {
+    const decimalPart = number % 1;
+    
+    if (decimalPart > 0.5) {
+      return Math.ceil(number);
+    } else {
+      return Math.floor(number);
+    }
+  }
+
+  finalCartAmount = customRound(finalCartAmount);
+
+  cartDiscount = Math.round(cartAmount - finalCartAmount);
 
   return (
     <Stack>

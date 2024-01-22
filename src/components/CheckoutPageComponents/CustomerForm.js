@@ -91,12 +91,12 @@ const CustomerForm = ({ cartitems }) => {
         quantity: quantity,
         total_price: totalItemPrice.toFixed(2),
         discount: discount,
-        discount_price: discountPrice.toFixed(2),
+        discount_price: totalItemDiscount.toFixed(2),
       };
     });
 
-    // Calculate average discount
-    const totalAvgDiscount = totalDiscount / cartitems.length;
+    // Calculate average discount amount 
+    const totalAvgDiscount = Math.round(totalAmount -  totalDiscountAmount)
 
     // Construct the customer and order details objects
     const customerData = {
