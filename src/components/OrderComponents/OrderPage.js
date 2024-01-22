@@ -84,7 +84,7 @@ const OrdersPage = () => {
             <ShoppingCartIcon
               sx={{ fontSize: '64px', color: 'gray' }}
             />
-            <Typography variant="h6" color="textSecondary">
+            <Typography variant="h6" sx={{ color: 'white' }}>
               There are no orders placed yet...!
             </Typography>
             <Button
@@ -123,7 +123,7 @@ const OrdersPage = () => {
               page={currentPage}
               onChange={handlePageChange}
               variant="outlined"
-              color="primary"
+              style={{background:"white"}}
             />
           </Box>
         </Grid>

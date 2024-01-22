@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" color="success">
+      <AppBar position="static" sx={{ backgroundColor: '#006400' }}>
         <Toolbar>
           
         <Typography variant="h6" sx={{ flexGrow: 1 }}>

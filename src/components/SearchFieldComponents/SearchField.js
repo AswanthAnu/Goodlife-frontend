@@ -43,7 +43,7 @@ const SearchField = ({ onSearch }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+    <Box sx={{ display: 'flex',}}>
       <TextField
         variant="outlined"
         placeholder="Search"
@@ -58,7 +58,7 @@ const SearchField = ({ onSearch }) => {
             </IconButton>
           ),
         }}
-        style={{ width: '250px', marginBottom: '20px' }}
+        style={{ width: '250px', marginBottom: '20px',  backgroundColor: 'white', borderRadius: '5px' }}
       />
     </Box>
   );

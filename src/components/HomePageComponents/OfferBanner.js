@@ -59,7 +59,7 @@ const OfferBanner = () => {
                 alt=""
                 style={{
                 width: '100%', // Set width to 100% of the container
-                height: '150px', // Set height to 100% of the container
+                height: '100%', // Set height to 100% of the container
                 objectFit: 'cover', // Maintain aspect ratio and cover the container
                 boxSizing: 'border-box', // Include padding in width and height
                 }}

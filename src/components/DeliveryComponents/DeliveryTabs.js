@@ -41,8 +41,8 @@ const DeliveryTabs = ({ orders, setOrders }) => {
             aria-label="Delivery Tabs"
             onChange={handleChange}
           >
-            <Tab label="Pending" value="1" />
-            <Tab label="Delivered" value="2" />
+            <Tab label="Pending" value="1" sx={{ color: 'white' }}/>
+            <Tab label="Delivered" value="2" sx={{ color: 'white' }}/>
           </TabList>
         </Box>
         <TabPanel value="1">

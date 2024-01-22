@@ -24,7 +24,15 @@ const HomePage = () => {
   return (
     <Router>
       <Navbar />
-      <Box sx={{ minHeight: 'calc(100vh - 200px)' }}>
+      <Box sx={{
+          minHeight: 'calc(90vh - 180px)',
+          backgroundImage: `url('static/images/background/background_image_2.webp')`, 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'repeat',
+          // margin: '-30px',
+          padding: '.5px'
+        }}>
         <Routes>
           <Route
             path="/"

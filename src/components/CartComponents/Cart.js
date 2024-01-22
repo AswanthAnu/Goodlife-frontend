@@ -118,9 +118,9 @@ const Cart = () => {
             }}
           >
             <ShoppingCartIcon
-              sx={{ fontSize: '64px', color: 'gray' }}
+              sx={{ fontSize: '64px', color: 'white' }}
             />
-            <Typography variant="h6" color="textSecondary">
+            <Typography variant="h6" sx={{ color: 'white' }}>
               Your cart is empty. Go back to the home and grab something.
             </Typography>
             <Button
@@ -170,7 +170,7 @@ const Cart = () => {
                     page={currentPage}
                     onChange={handlePageChange}
                     variant="outlined"
-                    color="primary"
+                    style={{background:"white"}}
                   />
                 </Box>
               </Grid>

@@ -65,7 +65,7 @@ const Delivery = () => {
               page={currentPage}
               onChange={handlePageChange}
               variant="outlined"
-              color="primary"
+              style={{background:"white"}}
             />
           </Box>
         </Grid>

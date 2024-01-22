@@ -32,7 +32,7 @@ const Footer = () => {
               <FaMailBulk style={{ marginRight: '5px' }} />
               goodlifebazar@gmail.com<br />
               <FaPhone style={{ marginRight: '5px' }} />
-              +91 6785463712<br />
+              +91 9745656625<br />
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <Link href="https://instagram.com/goodlifebazar" color="inherit" style={{ textDecoration: 'none', marginRight: '5px' }}>
                   <FaInstagram />

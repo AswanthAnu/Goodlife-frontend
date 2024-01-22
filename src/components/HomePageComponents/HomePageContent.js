@@ -158,38 +158,34 @@ const HomePageContent = () => {
   
   return (
     !loading && (
-      <Container maxWidth="lg" style={{ marginTop: '30px', marginBottom: '30px', }}>
+      <Container maxWidth="xl" style={{ marginTop: '30px', marginBottom: '30px', padding: "20px"}}>
         <Grid container spacing={1} style={{ marginBottom: '30px' }}>
-          {/* Offer Banner */}
-          <Grid item  md={7} sm={12} style={{ marginLeft: '44px' }}>
-            <OfferBanner />
-          </Grid>
-
-          {/* Search Field */}
-          <Grid item md={4} sm={6} style={{ marginTop: '12px', marginLeft: '-10px' }}>
-            <Stack>
-              <SearchField
-                onSearch={handleSearch}
-              
-              />
-            </Stack>  
-            <Stack>
-            
-            <CategoryChip
-              items={uniqueCategories}
-              setCurrentCategory = {setCurrentCategory}
-              onSearch={handleSearch}
-            />
+        {/* Offer Banner */}
+        
+        <Grid item md={5} sm={8} >
+        <Stack sx={{ textAlign: 'space-between', alignItems: 'space-between' }}>
+          <OfferBanner />
           </Stack>
-          </Grid>
-
         </Grid>
 
+        <Grid item md={6} sm={8} sx={{ marginTop: '20px',  }}>
+          <Stack sx={{ textAlign: 'center', alignItems: 'flex-end' }}>
+            {/* Search Field */}
+            <SearchField onSearch={handleSearch} />
+          </Stack>
+        </Grid>
+      </Grid>
+
+
+
+
         <Grid container spacing={1}>
-          {/* CategoryChip */}
-          
+          {/* CategoryChip on the left side */}
+          <Grid item md={3} sm={12}>
+            <CategoryChip items={uniqueCategories} setCurrentCategory={setCurrentCategory} onSearch={handleSearch} />
+          </Grid>
           {/* Product Display */}
-          <Grid item lg={10} sm={12}>
+          <Grid item md={9} sm={12}>
             {products.length === 0 ? (
               <Box
                 sx={{
@@ -209,9 +205,9 @@ const HomePageContent = () => {
               
             </Box>
           ) : (
-            <Grid container spacing={5}  justifyContent="flex-start" padding={"2%"}>
+            <Grid container spacing={5}  justifyContent="center" padding={"2%"}>
               {products.map((product, index) => (
-                <Grid item xs={4} sm={4} md={3} lg={3} xl={3} key={index}>
+                <Grid item xs={9} sm={4} md={3} lg={3} xl={3} key={index}>
                   <Card style={{ height: '100%', width: '220px'}}>
                     <Box sx={{
                       m: 1,
@@ -222,7 +218,7 @@ const HomePageContent = () => {
                       overflow: 'hidden', // Hide overflow content
                     }}>
                       {selectedVariants[index] &&
-                        product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price > 0 && (
+                        product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount > 0 && (
                           <Typography
                             variant="body2"
                             component="div"
@@ -236,9 +232,9 @@ const HomePageContent = () => {
                               borderTopLeftRadius: '16px',
                               fontSize: '10px', // Adjust font size
                             }}
-                          >
+                          > 
                             {selectedVariants[index] &&
-                              product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount_price}rs off
+                              product.variants.find((variant) => variant.id === selectedVariants[index]).pricing.discount}rs off
                           </Typography>
                         )}
                       <CardMedia
@@ -271,7 +267,7 @@ const HomePageContent = () => {
                                   fontSize: '10px', // Adjust font size
                                 }}
                               >
-                                {`${variant.pricing.discount}% off`}
+                                {`${variant.pricing.discount}rs off`}
                               </span>
                             )}
                           </MenuItem>
@@ -331,6 +327,8 @@ const HomePageContent = () => {
               onChange={handlePageChange}
               variant="outlined"
               color="primary"
+              background="white"
+              style={{background:"white"}}
             />
           </Box>
         </Grid>
