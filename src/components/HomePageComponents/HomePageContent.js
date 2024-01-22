@@ -240,7 +240,7 @@ const HomePageContent = () => {
                       <CardMedia
                         component="img"
                         height="120" // Adjust the fixed image height
-                        style={{ objectFit: 'cover', width: '100%' }} // Ensure the image covers the entire space
+                        style={{ objectFit: 'contain', width: '100%' }} // Ensure the image covers the entire space
                         image={product.image}
                       />
                     </Box>

@@ -9,9 +9,10 @@ const CardImage = ({cartitem, index}) => {
   return (
     <CardMedia
         component="img"
+        height="120"
         alt={`Image for item ${index}`}
         
-        style={{ objectFit: 'cover' }}
+        style={{ objectFit: 'contain' }}
         image={`https://api.goodlifebazar.com${cartitem.product.image}`}
     />
   )
