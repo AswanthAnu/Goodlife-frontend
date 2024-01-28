@@ -14,6 +14,7 @@ import OrderSummaryCard from './OrderSummaryCard'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import OfferBanner from '../HomePageComponents/OfferBanner';
 import config from '../../config';
+// import OfferCartItemsCard from './OfferCartItemsCard'
 
 const Cart = () => {
 
@@ -22,6 +23,7 @@ const Cart = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  // const [offerProduct, setOfferProduct] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,38 +70,40 @@ const Cart = () => {
     }
   };
 
-  useEffect(() => {
-    const apiUrl = `${config.apiUrl}/offercheck/`;
-    const token = localStorage.getItem('token');
-    setLoading(true);
+  // useEffect(() => {
+  //   const apiUrl = `${config.apiUrl}/offercheck/`;
+  //   const token = localStorage.getItem('token');
+  //   setLoading(true);
   
-    const fetchOfferData = async () => {
-      
-      try {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            Authorization: `Token ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ cartItems }),
-        });
+  //   const fetchOfferData = async () => {
+  //     try {
+  //       const response = await fetch(apiUrl, {
+  //         method: 'POST',
+  //         headers: {
+  //           Authorization: `Token ${token}`,
+  //           'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({ cartItems }),
+  //       });
   
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+  //       if (!response.ok) {
+  //         throw new Error('Network response was not ok');
+  //       }
   
-        const offerData = await response.json();
-      } catch (error) {
-        console.error('Error fetching offer data: ', error);
-      }
-    };
-    
-    fetchOfferData();
-    setLoading(false);
-  }, [cartItems, updateCartItemQuantity]);
+  //       const offerData = await response.json();
+  //       setOfferProduct(offerData.free_items);
+  //     } catch (error) {
+  //       console.error('Error fetching offer data: ', error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  
+  //   fetchOfferData();
+  // }, [cartItems, updateCartItemQuantity]); // <-- Include updateCartItemQuantity as dependency
   
   
+  console.log('--------------adf------skfl------sd---------sadf-')
 
   return (
     !loading && (
@@ -154,12 +158,14 @@ const Cart = () => {
                 updateCartItemQuantity={updateCartItemQuantity} 
                 setCartItems={setCartItems}
               />
-             {/* {offerProduct.length > 0 && (
-                <OfferCartItemsCard freeitems={offerProduct} />
-              )} */}
+             
 
 
               <OrderSummaryCard cartitems={cartItems}/>
+              
+              {/* {offerProduct.length > 0 && (
+                <OfferCartItemsCard freeitems={offerProduct} />
+              )} */}
             </Grid>
             {/* Pagination Section */}
             {totalPages > 1 ? (

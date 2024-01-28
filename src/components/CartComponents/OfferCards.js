@@ -28,7 +28,7 @@ const OfferCards = ({ freeitem, index }) => {
             },
           }}
         >
-          <CardMedia freeitem={freeitem} index={index} />
+          <CardMedia cartitem={freeitem} index={index} />
         </Stack>
 
         <Stack
@@ -43,7 +43,7 @@ const OfferCards = ({ freeitem, index }) => {
             },
           }}
         >
-          <CardProductName freeitem={freeitem} />
+          <CardProductName cartitem={freeitem} />
         </Stack>
 
         <Stack

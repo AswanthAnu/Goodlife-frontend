@@ -64,17 +64,14 @@ const LoginCard = () => {
   
 
   return (
-    <Container maxWidth="xs">
-
-      
+    <Container maxWidth="xs" style={{marginBottom: '20px'}}>
       <Card style={{ marginTop: '20px' }}>
-        <div style={{ backgroundColor: 'rgb(46, 125, 50)', textAlign: 'center', padding: '16px'}}>
-          
+        <div style={{ backgroundColor: 'rgb(46, 125, 50)', textAlign: 'center', padding: '16px' }}>
           <Typography variant="h6" style={{ color: 'white', marginTop: '8px' }}>
             Good Life Bazar
           </Typography>
         </div>
-
+  
         <CardContent>
           <Typography variant="h5" component="div" align="center" gutterBottom>
             Login
@@ -110,6 +107,9 @@ const LoginCard = () => {
           <Typography variant="body2" style={{ textAlign: 'center', marginTop: '16px' }}>
             New user? <Link href="/register">Register here</Link>
           </Typography>
+          <Typography variant="body2" style={{ textAlign: 'center', marginTop: '16px' }}>
+            Forgot Password? <Link href="/forgot_password">Set new password</Link>
+          </Typography>
         </CardContent>
       </Card>
       <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={() => setSnackbarOpen(false)}>
@@ -119,6 +119,7 @@ const LoginCard = () => {
       </Snackbar>
     </Container>
   );
+  
 };
 
 export default LoginCard;

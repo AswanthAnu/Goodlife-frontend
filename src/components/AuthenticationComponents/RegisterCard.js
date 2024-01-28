@@ -100,7 +100,7 @@ const RegisterCard = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xs" style={{marginBottom: '20px'}}>
       <Card style={{ marginTop: '20px' }}>
         <div style={{ backgroundColor: 'rgb(46, 125, 50)', textAlign: 'center', padding: '16px' }}>
           

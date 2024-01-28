@@ -81,6 +81,9 @@ const Navbar = () => {
               <Button color="inherit" component={Link} to="/about">
                 About
               </Button>
+              <Button color="inherit" component={Link} to="/deals_of_the_day">
+                Deals Of The Day
+              </Button>
               <Button color="inherit" component={Link} to="/orders">
                 Orders
               </Button>
@@ -114,6 +117,9 @@ const Navbar = () => {
                 <Stack direction="column" spacing={{ xs: 1, sm: 2, md: 4 }}>
                   <Button color="inherit" component={Link} to="/about">
                     About
+                  </Button>
+                  <Button color="inherit" component={Link} to="/deals_of_the_day">
+                    Deals Of The Day
                   </Button>
                   <Button color="inherit" component={Link} to="/orders">
                     Orders

@@ -35,6 +35,12 @@ const CustomerForm = ({ cartitems }) => {
   const [locationDialogOpen, setLocationDialogOpen] = useState(false);
   // const { isGeolocationEnabled, coords } = props;
   const [loading, setLoading] = useState(false); 
+  const [paymentMethods, setPaymentMethods] = useState({
+    cod: false,
+    cih: false,
+    upi: false,
+  });
+  
 
   useEffect(() => {
     if (formData.phoneNumber.length === 10) {
@@ -110,7 +116,8 @@ const CustomerForm = ({ cartitems }) => {
       phone_number: formData.phoneNumber,
       locationEnabled: true,
       latitude: formData.latitude,
-      longitude: formData.longitude
+      longitude: formData.longitude,
+      
       
     };
 
@@ -120,6 +127,9 @@ const CustomerForm = ({ cartitems }) => {
       discount_amount: totalDiscountAmount.toFixed(2),
       cart_id: cartitems[0].cart_id,
       order_details: orderDetails,
+      payment_method: Object.entries(paymentMethods)
+      .filter(([key, value]) => value)
+      .map(([key]) => key)[0],
     };
     console.log(cartitems[0].cart_id, 'cart id----')
 
@@ -249,11 +259,25 @@ const CustomerForm = ({ cartitems }) => {
       setLoading(false); // Set loading back to false if geolocation is not available
     }
   };
+  const handleCheckboxChange = (e) => {
+    const { name, checked } = e.target;
+  
+    // If the checkbox is being checked, uncheck all other checkboxes
+    const updatedPaymentMethods = { cod: false, cih: false, upi: false };
+    updatedPaymentMethods[name] = checked;
+  
+    setPaymentMethods(updatedPaymentMethods);
+  };
+  
+  
+  
+  
 
   return (
     <form>
   
           <Stack direction="row">
+            
             <FormControl fullWidth margin="normal">
               <TextField
                 id="first_name"
@@ -347,6 +371,42 @@ const CustomerForm = ({ cartitems }) => {
               />
             </FormControl>
           </Stack>
+          <Typography>Payment method: </Typography>
+          <Stack direction="row" spacing={0}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={paymentMethods.cod}
+                  onChange={handleCheckboxChange}
+                  name="cod"
+                  color="primary"
+                />
+              }
+              label="COD"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={paymentMethods.cih}
+                  onChange={handleCheckboxChange}
+                  name="cih"
+                  color="primary"
+                />
+              }
+              label="CIH"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={paymentMethods.upi}
+                  onChange={handleCheckboxChange}
+                  name="upi"
+                  color="primary"
+                />
+              }
+              label="UPI"
+            />
+          </Stack>
           <FormControlLabel
             control={
               <Checkbox
@@ -358,6 +418,8 @@ const CustomerForm = ({ cartitems }) => {
             }
             label="Enable Location"
           />
+
+          
           <Button
             variant="contained"
             color="success"

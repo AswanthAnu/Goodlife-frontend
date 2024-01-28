@@ -5,7 +5,7 @@ import {
 
 
 const CardImage = ({cartitem, index}) => {
-  console.log(cartitem, 'cartitem.product---------')
+  console.log(cartitem.product.image, 'cartitem.product---------')
   return (
     <CardMedia
         component="img"

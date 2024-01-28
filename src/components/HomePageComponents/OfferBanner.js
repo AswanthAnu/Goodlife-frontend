@@ -51,22 +51,24 @@ const OfferBanner = () => {
   }
 
   return (
-    <Paper elevation={3} style={{ padding: '0', height: '100%' }}>
-        <div style={{ textAlign: 'center', height: '100%' }}>
-            {offers.length > 0 && (
+    <Paper elevation={3} style={{ height: '100%' }}>
+    <div style={{ textAlign: 'center', height: '100%' }}>
+        {offers.length > 0 && (
             <img
                 src={offers[currentImageIndex].image}
                 alt=""
                 style={{
-                width: '100%', // Set width to 100% of the container
-                height: '100%', // Set height to 100% of the container
-                objectFit: 'cover', // Maintain aspect ratio and cover the container
-                boxSizing: 'border-box', // Include padding in width and height
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    boxSizing: 'border-box',
+                    marginBottom: -4, 
                 }}
             />
-            )}
-        </div>
-    </Paper>
+        )}
+    </div>
+</Paper>
+
 
 
   );

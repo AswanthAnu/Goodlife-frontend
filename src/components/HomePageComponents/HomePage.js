@@ -17,6 +17,8 @@ import LoginCard from "../AuthenticationComponents/LoginCard";
 import RegisterCard from "../AuthenticationComponents/RegisterCard";
 import NotFound from "../NotFound/NotFound";
 import AboutPage from "./About";
+import ForgotPassword from "../AuthenticationComponents/ForgotPassword";
+import DealOfTheDay from "../DealOfTheDayComponents/DealOfTheDay";
 
 const HomePage = () => {
   const isAuthenticated = !!localStorage.getItem('token'); // Check if token is present
@@ -87,6 +89,8 @@ const HomePage = () => {
           <Route path="about" element={<AboutPage />} />
           <Route path="login" element={<LoginCard />} />
           <Route path="register" element={<RegisterCard />} />
+          <Route path="forgot_password" element={<ForgotPassword />} />
+          <Route path="deals_of_the_day" element={<DealOfTheDay />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Box>
