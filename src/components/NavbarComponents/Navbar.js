@@ -55,6 +55,7 @@ const Navbar = () => {
         <Typography variant="h6" sx={{ flexGrow: 1 }}>
             <Link
               to="/"
+              onClick={() => window.location.href = "/"}
               style={{
                 textDecoration: 'none',
                 color: 'inherit',
